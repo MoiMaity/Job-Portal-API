@@ -1,0 +1,18 @@
+<%- include('../layout/header') %>
+
+<h2><%= job.title %></h2>
+<p><%= job.description %></p>
+
+<h3>Apply for this Job</h3>
+<form
+  action="/jobs/<%= job.id %>/apply"
+  method="POST"
+  enctype="multipart/form-data"
+>
+  <input type="text" name="name" placeholder="Full Name" required />
+  <input type="email" name="email" placeholder="Email" required />
+  <input type="file" name="resume" required />
+  <button type="submit">Apply</button>
+</form>
+
+<%- include('../layout/footer') %>

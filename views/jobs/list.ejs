@@ -1,0 +1,13 @@
+<%- include('../layout/header.ejs') %>
+
+<h2>Job Listings</h2>
+<ul>
+  <% jobs.forEach(job => { %>
+  <li>
+    <a href="/jobs/<%= job.id %>"><%= job.title %></a>
+    - <%= job.company %>
+  </li>
+  <% }) %>
+</ul>
+
+<%- include('../layout/footer.ejs') %>
