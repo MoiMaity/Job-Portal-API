@@ -1,4 +1,4 @@
-import { registerUser, authenticateUser } from "../model/user.model.js";
+import { users, registerUser, authenticateUser } from "../model/user.model.js";
 
 export default class UserController {
   getRegister(req, res) {
@@ -12,7 +12,8 @@ export default class UserController {
   addUser(req, res) {
     const { name, email, password } = req.body;
     registerUser({ id: users.length + 1, name, email, password });
-    res.redirect("/login", { error: null });
+    // Redirect to the mounted users login route
+    res.redirect("/users/login");
   }
 
   loginUser(req, res) {
@@ -26,6 +27,6 @@ export default class UserController {
   }
 
   logoutUser(req, res) {
-    req.session.destroy(() => res.redirect("/login"));
+    req.session.destroy(() => res.redirect("/users/login"));
   }
 }
